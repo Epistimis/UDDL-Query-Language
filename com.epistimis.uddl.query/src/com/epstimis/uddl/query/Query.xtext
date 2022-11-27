@@ -1,0 +1,9 @@
+grammar com.epstimis.uddl.query.Query with org.eclipse.xtext.common.Terminals
+
+generate query "http://www.epstimis.com/uddl/query/Query"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
