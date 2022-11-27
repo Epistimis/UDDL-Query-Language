@@ -170,7 +170,7 @@ BooleanFactor :  (not?=KW_NOT)?  pred=BooleanPredicate ;
 
 /**
  * NOTE: The problem with BooleanPredicate is when more than one of 	ScalarComparePredicate | SetComparePredicate | SetMembershipPredicate  is uncommented.
- * This results in a non LL grammar.
+ * This results in a non LL grammar. Search for syntactic predicates in the book.
  * 
  * TODO: fix this when we need set membership or set comparison capability
  */
