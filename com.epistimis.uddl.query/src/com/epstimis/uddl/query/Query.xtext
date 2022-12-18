@@ -94,7 +94,9 @@ An EntityTypeCharacteristicEquivalenceExpression identifies a relationship betwe
 EntityTypeCharacteristicEquivalenceExpression : secr=SelectedEntityCharacteristicReference  ( EQUALS_OPERATOR  selectedEntity=SelectedEntityReference )? ;
 
 /**
-A SelectedEntityCharacteristicReference is a SelectedEntity's Characteristic specified by CharacteristicReference. A SelectedEntityReference is used to identify a specific SelectedEntity should there be more than one Characteristic whose name is CharacteristicReference.
+A SelectedEntityCharacteristicReference is a SelectedEntity's Characteristic specified by CharacteristicReference. 
+A SelectedEntityReference is used to identify a specific SelectedEntity should there be more than one Characteristic 
+whose name is CharacteristicReference.
 */
 SelectedEntityCharacteristicReference : ( selectedEntity=SelectedEntityReference  PERIOD )?  characteristic=CharacteristicReference ;
 
@@ -128,7 +130,7 @@ OrderingExpression : characteristic=ProjectedCharacteristicReference  (orderingT
 /**
 A ProjectedCharacteristicReference is a reference to a Characteristic in the ProjectedCharacteristicList.
 */
-ProjectedCharacteristicReference : QualifiedProjectedCharacteristicReference | UnqualifiedProjectedCharacteristicReferenceOrAlias ;
+ProjectedCharacteristicReference : QualifiedProjectedCharacteristicReference | {ProjectedCharacteristicReference} UnqualifiedProjectedCharacteristicReferenceOrAlias ;
 
 /**
 A QualifiedProjectedCharacteristicReference is a Characteristic specified by CharacteristicReference in the Entity specified by SelectedEntityReference.
@@ -237,7 +239,9 @@ A PredicateTerm represents a DataModel Element whose associated data is scalar.
 PredicateTerm : CharacteristicBasis | EnumLiteralReferenceExpression ;
 
 /**
-A CharacteristicBasis is a Characteristic whose associated data is scalar. If CharacteristicBasis is a Subquery with one Characteristic in its ProjectedCharacteristicList, then the CharacteristicBasis is that Characteristic. Otherwise, the Characteristic is specified by SelectedEntityCharacteristicReference.
+A CharacteristicBasis is a Characteristic whose associated data is scalar. If CharacteristicBasis is a 
+Subquery with one Characteristic in its ProjectedCharacteristicList, then the CharacteristicBasis is that Characteristic. 
+Otherwise, the Characteristic is specified by SelectedEntityCharacteristicReference.
 */
 CharacteristicBasis : SelectedEntityCharacteristicReference | Subquery ;
 

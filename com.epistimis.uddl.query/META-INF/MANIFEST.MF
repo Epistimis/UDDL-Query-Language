@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Automatic-Module-Name: com.epistimis.uddl.query
 Bundle-ManifestVersion: 2
 Bundle-Name: com.epistimis.uddl.query
-Bundle-Vendor: My Company
+Bundle-Vendor: Epistimis LLC
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: com.epistimis.uddl.query; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -25,5 +25,6 @@ Export-Package: com.epstimis.uddl.query.serializer,
  com.epstimis.uddl.query.query,
  com.epstimis.uddl.query.services,
  com.epstimis.uddl.query.parser.antlr.internal,
- com.epstimis.uddl.query.parser.antlr
+ com.epstimis.uddl.query.parser.antlr,
+ com.epstimis.uddl.query.formatting2
 Import-Package: org.apache.log4j

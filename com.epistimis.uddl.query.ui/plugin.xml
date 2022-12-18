@@ -431,4 +431,61 @@
 			type="text">
 		</fileTypes>
 	</extension>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<category id="com.epstimis.uddl.query.ui.category" name="Query">
+		</category>
+		<wizard
+			category="com.epstimis.uddl.query.ui.category"
+			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard"
+			id="com.epstimis.uddl.query.ui.wizard.QueryNewProjectWizard"
+			name="Query Project"
+			icon="icons/new_Query_proj.gif"
+			project="true">
+		</wizard>
+	</extension>
+	<extension
+		point="org.eclipse.xtext.ui.projectTemplate">
+		<projectTemplateProvider
+			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:com.epstimis.uddl.query.ui.wizard.QueryProjectTemplateProvider"
+			grammarName="com.epstimis.uddl.query.Query">
+		</projectTemplateProvider>
+	</extension>
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewProjectWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewProjectWizard"/>
+		</perspectiveExtension>
+	</extension>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<category id="com.epstimis.uddl.query.ui.category" name="Query">
+		</category>
+		<wizard
+			category="com.epstimis.uddl.query.ui.category"
+			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewFileWizard"
+			id="com.epstimis.uddl.query.ui.wizard.QueryNewFileWizard"
+			name="Query File"
+			icon="icons/new_Query_file.png">
+		</wizard>
+	</extension>
+	<extension
+		point="org.eclipse.xtext.ui.fileTemplate">
+		<fileTemplateProvider
+			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:com.epstimis.uddl.query.ui.wizard.QueryFileTemplateProvider"
+			grammarName="com.epstimis.uddl.query.Query">
+		</fileTemplateProvider>
+	</extension>
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewFileWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewFileWizard"/>
+		</perspectiveExtension>
+	</extension>
 </plugin>
