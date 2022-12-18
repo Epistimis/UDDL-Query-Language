@@ -3,7 +3,7 @@
 <plugin>
 	<extension point="org.eclipse.emf.ecore.generated_package">
 		<package
-			uri = "http://www.epstimis.com/uddl/query/Query"
+			uri = "http://www.epistimis.com/uddl/query/Query"
 			class = "com.epstimis.uddl.query.query.QueryPackage"
 			genModel = "model/generated/Query.genmodel" />
 	</extension>

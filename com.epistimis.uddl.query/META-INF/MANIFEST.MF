@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.common,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: com.epstimis.uddl.query.serializer,
+Export-Package: com.epstimis.uddl.query.formatting2,
+ com.epstimis.uddl.query.parser.antlr.internal,
+ com.epstimis.uddl.query.serializer,
  com.epstimis.uddl.query.query.util,
  com.epstimis.uddl.query.validation,
  com.epstimis.uddl.query.query.impl,
@@ -23,8 +25,6 @@ Export-Package: com.epstimis.uddl.query.serializer,
  com.epstimis.uddl.query.generator,
  com.epstimis.uddl.query,
  com.epstimis.uddl.query.query,
- com.epstimis.uddl.query.services,
- com.epstimis.uddl.query.parser.antlr.internal,
  com.epstimis.uddl.query.parser.antlr,
- com.epstimis.uddl.query.formatting2
+ com.epstimis.uddl.query.services
 Import-Package: org.apache.log4j

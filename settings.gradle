@@ -1,0 +1,3 @@
+include 'com.epistimis.uddl.query'
+include 'com.epistimis.uddl.query.ide'
+include 'com.epistimis.uddl.query.tests'

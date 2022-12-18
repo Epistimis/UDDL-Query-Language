@@ -31,7 +31,7 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
-			name = "com.epstimis.uddl.query.Query"
+			name = "com.epistimis.uddl.query.Query"
 			fileExtensions = "quddl"
 
 			serializer = {
