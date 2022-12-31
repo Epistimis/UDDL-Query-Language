@@ -15,10 +15,20 @@ A QuerySpecification represents a Query in the Data Model.
 QuerySpecification : QueryStatement ;
 
 /**
-A QueryStatement is the expression of a Query, which is a declaration of a set of data in terms of a set of Entities and their Characteristics. The SelectedEntityExpression defines the context for a QueryStatement's data set as a set of related Entities and optionally a set of conditions expressed over their Characteristics that are true for all data in the data set. The ProjectedCharacteristicList identifies the specific Characteristics that are the elements of the QueryStatement's data set. The SetQualifier DISTINCT, if specified, indicates that instances of data in the data set are not duplicated. Otherwise, they may be duplicated.
+A QueryStatement is the expression of a Query, which is a declaration of a set of data in terms of a set of Entities and their 
+Characteristics. The SelectedEntityExpression defines the context for a QueryStatement's data set as a set of related Entities 
+and optionally a set of conditions expressed over their Characteristics that are true for all data in the data set. 
+The ProjectedCharacteristicList identifies the specific Characteristics that are the elements of the QueryStatement's data set. 
+The SetQualifier DISTINCT, if specified, indicates that instances of data in the data set are not duplicated. Otherwise, 
+they may be duplicated.
+* 
+* Optionally followed by a semicolon
+*
 */
 //QueryStatement : KW_SELECT , [ SetQualifier ] , ProjectedCharacteristicList , SelectedEntityExpression ;
-QueryStatement : KW_SELECT ( qualifier=SetQualifier )? projectedCharacteristicList=ProjectedCharacteristicList  selectedEntityExpression=SelectedEntityExpression ;
+QueryStatement : KW_SELECT ( qualifier=SetQualifier )? projectedCharacteristicList=ProjectedCharacteristicList  
+	selectedEntityExpression=SelectedEntityExpression ';'?
+;
 
 
 
@@ -28,7 +38,9 @@ A SetQualifier indicates whether instances of data in a set are unique (KW_DISTI
 SetQualifier : KW_DISTINCT | KW_ALL ;
 
 /**
-A ProjectedCharacteristicList defines the set of Characteristics in a QueryStatement. ALL_CHARACTERISTICS indicates that every Characteristic of every SelectedEntity is included. Otherwise, the Characteristics are those specified by the projected_characteristic_expressions. In both cases, only those Characteristics whose types are not Entities are included.
+A ProjectedCharacteristicList defines the set of Characteristics in a QueryStatement. ALL_CHARACTERISTICS indicates that every 
+Characteristic of every SelectedEntity is included. Otherwise, the Characteristics are those specified by the 
+projected_characteristic_expressions. In both cases, only those Characteristics whose types are not Entities are included.
 */
 ProjectedCharacteristicList : all=ALL_CHARACTERISTICS | characteristic+=ProjectedCharacteristicExpression  ( COMMA  characteristic+=ProjectedCharacteristicExpression )* ;
 
@@ -101,7 +113,8 @@ whose name is CharacteristicReference.
 SelectedEntityCharacteristicReference : ( selectedEntity=SelectedEntityReference  PERIOD )?  characteristic=CharacteristicReference ;
 
 /**
-A SelectedEntityReference is a reference by name to a SelectedEntity, where QueryIdentifier is either a SelectedEntity's EntityTypeReference or its SelectedEntityAlias.
+A SelectedEntityReference is a reference by name to a SelectedEntity, where QueryIdentifier is either a SelectedEntity's 
+EntityTypeReference or its SelectedEntityAlias.
 */
 SelectedEntityReference : QueryIdentifier ;
 
@@ -130,7 +143,7 @@ OrderingExpression : characteristic=ProjectedCharacteristicReference  (orderingT
 /**
 A ProjectedCharacteristicReference is a reference to a Characteristic in the ProjectedCharacteristicList.
 */
-ProjectedCharacteristicReference : QualifiedProjectedCharacteristicReference | {ProjectedCharacteristicReference} UnqualifiedProjectedCharacteristicReferenceOrAlias ;
+ProjectedCharacteristicReference : QualifiedProjectedCharacteristicReference |  UnqualifiedProjectedCharacteristicReferenceOrAlias ;
 
 /**
 A QualifiedProjectedCharacteristicReference is a Characteristic specified by CharacteristicReference in the Entity specified by SelectedEntityReference.
@@ -138,7 +151,10 @@ A QualifiedProjectedCharacteristicReference is a Characteristic specified by Cha
 QualifiedProjectedCharacteristicReference : selectedEntityReference=SelectedEntityReference PERIOD  characteristic=CharacteristicReference ;
 
 /**
-An UnqualifiedProjectedCharacteristicReferenceOrAlias is a Characteristic in ProjectedCharacteristicList whose rolename or assigned ProjectedCharacteristicAlias is QueryIdentifier. If QueryIdentifier happens to match both a ProjectedCharacteristicAlias and a rolename, then the Characteristic associated with the ProjectedCharacteristicAlias is assumed.
+An UnqualifiedProjectedCharacteristicReferenceOrAlias is a Characteristic in ProjectedCharacteristicList whose rolename 
+or assigned ProjectedCharacteristicAlias is QueryIdentifier. If QueryIdentifier happens to match both a 
+ProjectedCharacteristicAlias and a rolename, then the Characteristic associated with the ProjectedCharacteristicAlias 
+is assumed.
 */
 UnqualifiedProjectedCharacteristicReferenceOrAlias : QueryIdentifier ;
 
@@ -209,7 +225,10 @@ CharacteristicBasisSet : LEFT_PAREN  characteristicBasis+=CharacteristicBasis  (
 
 /**
 	
-A SetComparePredicate is a function that represents a pair-wise comparison of PredicateTerm with all members of CompareSet. If SetCompareQuantifier is KW_ALL, the function evaluates to TRUE if the application of CompareOperator evaluates to TRUE for PredicateTerm and every member of the set, FALSE otherwise. If SetCompareQuantifier is KW_SOME, the function evaluates to TRUE if the application of CompareOperator evaluates to TRUE for PredicateTerm and at least one member in the set, FALSE otherwise.
+A SetComparePredicate is a function that represents a pair-wise comparison of PredicateTerm with all members of CompareSet. 
+If SetCompareQuantifier is KW_ALL, the function evaluates to TRUE if the application of CompareOperator evaluates to TRUE 
+for PredicateTerm and every member of the set, FALSE otherwise. If SetCompareQuantifier is KW_SOME, the function evaluates to 
+TRUE if the application of CompareOperator evaluates to TRUE for PredicateTerm and at least one member in the set, FALSE otherwise.
 */
 SetComparePredicate : pred=PredicateTerm  op=CompareOperator quantifier=SetCompareQuantifier set=CompareSet ;
 
@@ -221,7 +240,9 @@ CompareSet : Subquery ;
 /**
 A CompareOperator is a boolean comparison operator.
 */
-CompareOperator : EQUALS_OPERATOR | NOT_EQUALS_OPERATOR | LESS_THAN_OPERATOR | GREATER_THAN_OPERATOR | LESS_THAN_OR_EQUALS_OPERATOR | GREATER_THAN_OR_EQUALS_OPERATOR ;
+CompareOperator : EQUALS_OPERATOR | NOT_EQUALS_OPERATOR | 
+				  LESS_THAN_OPERATOR | GREATER_THAN_OPERATOR | LESS_THAN_OR_EQUALS_OPERATOR | GREATER_THAN_OR_EQUALS_OPERATOR
+;
 
 /**
 A SetCompareQuantifier indicates that a comparison applies to every (KW_ALL) or any (KW_SOME) member of a set.
@@ -231,7 +252,7 @@ SetCompareQuantifier : KW_ALL | KW_SOME ;
 /**
 An ExistsPredicate is a function that evaluates to TRUE if there is any data associated with the single Characteristic in Subquery's ProjectedCharacteristicList, FALSE otherwise.
 */
-ExistsPredicate : KW_EXISTS  query=Subquery ;
+ExistsPredicate : KW_EXISTS  sub=Subquery ;
 
 /**
 A PredicateTerm represents a DataModel Element whose associated data is scalar.
@@ -294,7 +315,7 @@ ProjectedCharacteristicAlias : QueryIdentifier ;
 /**
 A QueryIdentifier is an alphanumeric string used to represent an Identifier in a QuerySpecification.
 */
-QueryIdentifier : id=ID; // Identifier ; // These are identical - and if they aren't, they should be
+QueryIdentifier : id=IDENTIFIER ; // ID ; // These are identical - and if they aren't, they should be
 
 /**
 The following terms start with kw_ to indicate that they are keyword tokens.
@@ -368,7 +389,7 @@ terminal COLON : ":" ;
 /**
 The following terms represent Identifier tokens.
 */
-Identifier : char+=LETTER  ( char+=LETTER | DIGITAL_LITERAL)* ;
+terminal IDENTIFIER : LETTER  ( LETTER | DIGITAL_LITERAL)* ;
 terminal LETTER : "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "_" ;
 terminal DIGITAL_LITERAL : "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 	
