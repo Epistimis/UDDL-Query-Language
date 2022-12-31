@@ -1,10 +1,10 @@
-grammar com.epstimis.uddl.query.Query with org.eclipse.xtext.common.Terminals
+grammar com.epistimis.uddl.query.Query with org.eclipse.xtext.common.Terminals
 
 generate query "http://www.epistimis.com/uddl/query/Query"
 
 
 /**
- * BooleanPredicate is not LL. See book for how to handle this. This modification is because the original grammar is ANTLR 4, but XText only
+ * BooleanPredicate is not LL. See book for how to handle this. This modification is because the original grammar is ANTLR 4, but XText only 
  * supports ANTLR 3.
  */
 
@@ -55,7 +55,7 @@ ExplicitSelectedEntityCharacteristicReference : selectedEntityCharacteristicRefe
 /**
 A SelectedEntityExpression defines the context for a QueryStatement's data set as a set of related Entities (using the FromClause). It may also specify a set of conditions expressed over Characteristics of those Entities that are true for all data in the data set (using a WhereClause) and specify how data in the data set is ordered (using an OrderByClause).
 */
-SelectedEntityExpression : from=FromClause  ( whre=WhereClause )?  ( orderBy=OrderByClause )? ;
+SelectedEntityExpression : from=FromClause  ( where=WhereClause )?  ( orderBy=OrderByClause )? ;
 
 /**
 A FromClause identifies a set of related Entities via EntityExpression.
@@ -94,8 +94,8 @@ An EntityTypeCharacteristicEquivalenceExpression identifies a relationship betwe
 EntityTypeCharacteristicEquivalenceExpression : secr=SelectedEntityCharacteristicReference  ( EQUALS_OPERATOR  selectedEntity=SelectedEntityReference )? ;
 
 /**
-A SelectedEntityCharacteristicReference is a SelectedEntity's Characteristic specified by CharacteristicReference.
-A SelectedEntityReference is used to identify a specific SelectedEntity should there be more than one Characteristic
+A SelectedEntityCharacteristicReference is a SelectedEntity's Characteristic specified by CharacteristicReference. 
+A SelectedEntityReference is used to identify a specific SelectedEntity should there be more than one Characteristic 
 whose name is CharacteristicReference.
 */
 SelectedEntityCharacteristicReference : ( selectedEntity=SelectedEntityReference  PERIOD )?  characteristic=CharacteristicReference ;
@@ -149,12 +149,12 @@ OrderingType : KW_ASC | KW_DESC ;
 
 
 /**
- * Boolean expressions are left recursive. To address this, see the book p 169
+ * Boolean expressions are left recursive. To address this, see the book p 169 
  */
-
+ 
 
 /**
-
+	
 A BooleanExpression is a boolean OR expression over boolean_terms.
 */
 BooleanExpression : term+=BooleanTerm  ( KW_OR  term+=BooleanTerm )* ;
@@ -173,17 +173,17 @@ BooleanFactor :  (not?=KW_NOT)?  pred=BooleanPredicate ;
 /**
  * NOTE: The problem with BooleanPredicate is when more than one of 	ScalarComparePredicate | SetComparePredicate | SetMembershipPredicate  is uncommented.
  * This results in a non LL grammar. Search for syntactic predicates in the book.
- *
+ * 
  * TODO: fix this when we need set membership or set comparison capability
  */
 /**
 A BooleanPredicate is a predicate.
 */
-BooleanPredicate :
-	ScalarComparePredicate |
-//	SetComparePredicate |
-//	SetMembershipPredicate |
-	ExistsPredicate |
+BooleanPredicate : 
+	ScalarComparePredicate | 
+//	SetComparePredicate | 
+//	SetMembershipPredicate | 
+	ExistsPredicate | 
 	LEFT_PAREN  BooleanExpression  RIGHT_PAREN
 ;
 
@@ -208,7 +208,7 @@ A CharacteristicBasisSet is one or more CharacteristicBasis.
 CharacteristicBasisSet : LEFT_PAREN  characteristicBasis+=CharacteristicBasis  ( COMMA  characteristicBasis+=CharacteristicBasis)*  RIGHT_PAREN ;
 
 /**
-
+	
 A SetComparePredicate is a function that represents a pair-wise comparison of PredicateTerm with all members of CompareSet. If SetCompareQuantifier is KW_ALL, the function evaluates to TRUE if the application of CompareOperator evaluates to TRUE for PredicateTerm and every member of the set, FALSE otherwise. If SetCompareQuantifier is KW_SOME, the function evaluates to TRUE if the application of CompareOperator evaluates to TRUE for PredicateTerm and at least one member in the set, FALSE otherwise.
 */
 SetComparePredicate : pred=PredicateTerm  op=CompareOperator quantifier=SetCompareQuantifier set=CompareSet ;
@@ -239,8 +239,8 @@ A PredicateTerm represents a DataModel Element whose associated data is scalar.
 PredicateTerm : CharacteristicBasis | EnumLiteralReferenceExpression ;
 
 /**
-A CharacteristicBasis is a Characteristic whose associated data is scalar. If CharacteristicBasis is a
-Subquery with one Characteristic in its ProjectedCharacteristicList, then the CharacteristicBasis is that Characteristic.
+A CharacteristicBasis is a Characteristic whose associated data is scalar. If CharacteristicBasis is a 
+Subquery with one Characteristic in its ProjectedCharacteristicList, then the CharacteristicBasis is that Characteristic. 
 Otherwise, the Characteristic is specified by SelectedEntityCharacteristicReference.
 */
 CharacteristicBasis : SelectedEntityCharacteristicReference | Subquery ;
@@ -294,7 +294,7 @@ ProjectedCharacteristicAlias : QueryIdentifier ;
 /**
 A QueryIdentifier is an alphanumeric string used to represent an Identifier in a QuerySpecification.
 */
-QueryIdentifier : ID; // Identifier ; // These are identical - and if they aren't, they should be
+QueryIdentifier : id=ID; // Identifier ; // These are identical - and if they aren't, they should be
 
 /**
 The following terms start with kw_ to indicate that they are keyword tokens.
@@ -360,7 +360,7 @@ The following terms represent punctuation tokens.
 terminal COMMA : "," ;
 terminal LEFT_PAREN : "(" ;
 terminal RIGHT_PAREN : ")" ;
-terminal PERIOD : "." ;
+terminal PERIOD : "." ; 
 terminal LEFT_BRACE : "{" ;
 terminal RIGHT_BRACE : "}" ;
 terminal COLON : ":" ;
@@ -371,3 +371,4 @@ The following terms represent Identifier tokens.
 Identifier : char+=LETTER  ( char+=LETTER | DIGITAL_LITERAL)* ;
 terminal LETTER : "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "_" ;
 terminal DIGITAL_LITERAL : "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+	

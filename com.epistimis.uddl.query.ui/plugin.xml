@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="quddl"
-			id="com.epstimis.uddl.query.Query"
+			id="com.epistimis.uddl.query.Query"
 			name="Query Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+					definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="com.epstimis.uddl.query.Query.validate">
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="com.epistimis.uddl.query.Query.validate">
 			<activeWhen>
 				<reference
-					definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+					definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened" />
+				<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="com.epstimis.uddl.query.Query.XtextEditor.opened" />
+					<reference definitionId="com.epistimis.uddl.query.Query.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="com.epstimis.uddl.query.Query.Editor.opened">
+		<definition id="com.epistimis.uddl.query.Query.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="com.epstimis.uddl.query.Query"
+						value="com.epistimis.uddl.query.Query"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="com.epstimis.uddl.query.Query.XtextEditor.opened">
+		<definition id="com.epistimis.uddl.query.Query.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="com.epstimis.uddl.query.Query"
+						value="com.epistimis.uddl.query.Query"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="com.epstimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="com.epistimis.uddl.query.Query"
 			name="Query">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 		</page>
 		<page
-			category="com.epstimis.uddl.query.Query"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="com.epstimis.uddl.query.Query.coloring"
+			category="com.epistimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="com.epistimis.uddl.query.Query.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 		</page>
 		<page
-			category="com.epstimis.uddl.query.Query"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="com.epstimis.uddl.query.Query.templates"
+			category="com.epistimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="com.epistimis.uddl.query.Query.templates"
 			name="Templates">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="com.epstimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="com.epistimis.uddl.query.Query"
 			name="Query">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,14 +114,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="com.epstimis.uddl.query.ui.keyword_Query"
+			id="com.epistimis.uddl.query.ui.keyword_Query"
 			label="Query"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 		<command
 			description="Trigger expensive validation"
-			id="com.epstimis.uddl.query.Query.validate"
+			id="com.epistimis.uddl.query.Query.validate"
 			name="Validate">
 		</command>
 		<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			<command
-				commandId="com.epstimis.uddl.query.Query.validate"
+				commandId="com.epistimis.uddl.query.Query.validate"
 				style="push"
 				tooltip="Trigger expensive validation">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+						definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened" />
+					<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened" />
+					<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="com.epstimis.uddl.query.Query.XtextEditor.opened" />
+						<reference definitionId="com.epistimis.uddl.query.Query.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+					<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,11 +195,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+					definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,7 +208,7 @@
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
 			file-extensions="quddl"
-			id="com.epstimis.uddl.query.Query.contenttype"
+			id="com.epistimis.uddl.query.Query.contenttype"
 			name="Query File"
 			priority="normal">
 		</content-type>
@@ -217,17 +217,17 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="quddl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
 			uriExtension="quddl">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for com.epstimis.uddl.query.Query -->
+	<!-- marker definitions for com.epistimis.uddl.query.Query -->
 	<extension
 			id="query.check.fast"
 			name="Query Problem"
@@ -251,34 +251,34 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="com.epstimis.uddl.query.Query"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="com.epstimis.uddl.query.Query.validator.preferencePage"
+			category="com.epistimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="com.epistimis.uddl.query.Query.validator.preferencePage"
 			name="Errors/Warnings">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="quddl"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="com.epstimis.uddl.query.Query"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="com.epstimis.uddl.query.Query.compiler.preferencePage"
+			category="com.epistimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="com.epistimis.uddl.query.Query.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="com.epstimis.uddl.query.Query"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="com.epstimis.uddl.query.Query.compiler.propertyPage"
+			category="com.epistimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="com.epistimis.uddl.query.Query.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -289,20 +289,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="com.epstimis.uddl.query.Query.OpenGeneratedCode"
+				id="com.epistimis.uddl.query.Query.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened" />
+					<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened" />
+				<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -310,11 +310,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+					definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -334,16 +334,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="com.epstimis.uddl.query.Query.Editor.opened"/>
+					<reference definitionId="com.epistimis.uddl.query.Query.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for com.epstimis.uddl.query.Query -->
+	<!-- quickfix marker resolution generator for com.epistimis.uddl.query.Query -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="com.epistimis.uddl.query.ui.query.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
@@ -351,7 +351,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="com.epistimis.uddl.query.ui.query.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
@@ -359,7 +359,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="com.epistimis.uddl.query.ui.query.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
@@ -370,11 +370,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+					definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -386,7 +386,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="com.epstimis.uddl.query.Query.Editor.opened">
+						definitionId="com.epistimis.uddl.query.Query.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -394,34 +394,34 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="com.epstimis.uddl.query.Query"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="com.epstimis.uddl.query.Query.refactoring"
+			category="com.epistimis.uddl.query.Query"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="com.epistimis.uddl.query.Query.refactoring"
 			name="Refactoring">
-			<keywordReference id="com.epstimis.uddl.query.ui.keyword_Query"/>
+			<keywordReference id="com.epistimis.uddl.query.ui.keyword_Query"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="com.epstimis.uddl.query.Query.compare.contentViewers"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="com.epistimis.uddl.query.Query.compare.contentViewers"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="quddl">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="com.epstimis.uddl.query.Query.contenttype"
-			contentViewerId="com.epstimis.uddl.query.Query.compare.contentViewers" />
+			contentTypeId="com.epistimis.uddl.query.Query.contenttype"
+			contentViewerId="com.epistimis.uddl.query.Query.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="com.epstimis.uddl.query.Query.compare.contentMergeViewers"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="com.epistimis.uddl.query.Query.compare.contentMergeViewers"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="quddl" label="Query Compare">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="com.epstimis.uddl.query.Query.contenttype"
-			contentMergeViewerId="com.epstimis.uddl.query.Query.compare.contentMergeViewers" />
+			contentTypeId="com.epistimis.uddl.query.Query.contenttype"
+			contentMergeViewerId="com.epistimis.uddl.query.Query.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="com.epstimis.uddl.query.Query.editors.documentProviders"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+		<provider id="com.epistimis.uddl.query.Query.editors.documentProviders"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
 			extensions="quddl">
 		</provider>
 	</extension>
@@ -433,12 +433,12 @@
 	</extension>
 	<extension
 		point="org.eclipse.ui.newWizards">
-		<category id="com.epstimis.uddl.query.ui.category" name="Query">
+		<category id="com.epistimis.uddl.query.ui.category" name="Query">
 		</category>
 		<wizard
-			category="com.epstimis.uddl.query.ui.category"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard"
-			id="com.epstimis.uddl.query.ui.wizard.QueryNewProjectWizard"
+			category="com.epistimis.uddl.query.ui.category"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard"
+			id="com.epistimis.uddl.query.ui.wizard.QueryNewProjectWizard"
 			name="Query Project"
 			icon="icons/new_Query_proj.gif"
 			project="true">
@@ -447,27 +447,27 @@
 	<extension
 		point="org.eclipse.xtext.ui.projectTemplate">
 		<projectTemplateProvider
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:com.epstimis.uddl.query.ui.wizard.QueryProjectTemplateProvider"
-			grammarName="com.epstimis.uddl.query.Query">
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:com.epistimis.uddl.query.ui.wizard.QueryProjectTemplateProvider"
+			grammarName="com.epistimis.uddl.query.Query">
 		</projectTemplateProvider>
 	</extension>
 	<extension
 		point="org.eclipse.ui.perspectiveExtensions">
 		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
-			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewProjectWizard"/>
+			<newWizardShortcut id="com.epistimis.uddl.query.ui.wizard.QueryNewProjectWizard"/>
 		</perspectiveExtension>
 		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
-			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewProjectWizard"/>
+			<newWizardShortcut id="com.epistimis.uddl.query.ui.wizard.QueryNewProjectWizard"/>
 		</perspectiveExtension>
 	</extension>
 	<extension
 		point="org.eclipse.ui.newWizards">
-		<category id="com.epstimis.uddl.query.ui.category" name="Query">
+		<category id="com.epistimis.uddl.query.ui.category" name="Query">
 		</category>
 		<wizard
-			category="com.epstimis.uddl.query.ui.category"
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewFileWizard"
-			id="com.epstimis.uddl.query.ui.wizard.QueryNewFileWizard"
+			category="com.epistimis.uddl.query.ui.category"
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewFileWizard"
+			id="com.epistimis.uddl.query.ui.wizard.QueryNewFileWizard"
 			name="Query File"
 			icon="icons/new_Query_file.png">
 		</wizard>
@@ -475,17 +475,17 @@
 	<extension
 		point="org.eclipse.xtext.ui.fileTemplate">
 		<fileTemplateProvider
-			class="com.epstimis.uddl.query.ui.QueryExecutableExtensionFactory:com.epstimis.uddl.query.ui.wizard.QueryFileTemplateProvider"
-			grammarName="com.epstimis.uddl.query.Query">
+			class="com.epistimis.uddl.query.ui.QueryExecutableExtensionFactory:com.epistimis.uddl.query.ui.wizard.QueryFileTemplateProvider"
+			grammarName="com.epistimis.uddl.query.Query">
 		</fileTemplateProvider>
 	</extension>
 	<extension
 		point="org.eclipse.ui.perspectiveExtensions">
 		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
-			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewFileWizard"/>
+			<newWizardShortcut id="com.epistimis.uddl.query.ui.wizard.QueryNewFileWizard"/>
 		</perspectiveExtension>
 		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
-			<newWizardShortcut id="com.epstimis.uddl.query.ui.wizard.QueryNewFileWizard"/>
+			<newWizardShortcut id="com.epistimis.uddl.query.ui.wizard.QueryNewFileWizard"/>
 		</perspectiveExtension>
 	</extension>
 </plugin>

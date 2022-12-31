@@ -1,4 +1,4 @@
-module com.epstimis.uddl.query.GenerateQuery
+module com.epistimis.uddl.query.GenerateQuery
 
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
@@ -6,7 +6,7 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 var rootPath = ".."
 
 Workflow {
-
+	
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -34,9 +34,14 @@ Workflow {
 			name = "com.epistimis.uddl.query.Query"
 			fileExtensions = "quddl"
 
+		    fragment = io.typefox.xtext2langium.Xtext2LangiumFragment {
+		        outputPath = './langium'
+		    }
+
 			serializer = {
 				generateStub = false
 			}
+
 			validator = {
 				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 				// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage
@@ -60,7 +65,7 @@ Workflow {
 			projectWizard = {
 				generate = true
 			}
-
+			
 		}
 	}
 }
