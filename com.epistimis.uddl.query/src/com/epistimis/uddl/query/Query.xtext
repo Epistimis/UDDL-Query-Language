@@ -318,15 +318,18 @@ A QueryIdentifier is an alphanumeric string used to represent an Identifier in a
 QueryIdentifier : id=IDENTIFIER ; // ID ; // These are identical - and if they aren't, they should be
 
 /**
-The following terms start with kw_ to indicate that they are keyword tokens.
+* The following terms start with kw_ to indicate that they are keyword tokens.
+* Note that some rules have been modified to recognize any mix of case.
+* TODO: Is this desirable? Either all should be this way, or none. When we start using this grammar to edit the queries
+* this will become obvious.
 */
-terminal KW_ALL : "ALL" | "all" ;
-terminal KW_SOME : "SOME" | "some" | "ANY" | "any" ;
+terminal KW_ALL : ('A'|'a')('L'|'l')('L'|'l'); // "ALL" | "all" ;
+terminal KW_SOME : ('S'|'s')('O'|'o')('M'|'m')('E'|'e') | ('A'|'a')('N'|'n')('Y'|'y'); //  "SOME" | "some" | "ANY" | "any" ;
 terminal KW_EXISTS : "EXISTS" | "exists" ;
 
 terminal KW_NOT : "NOT" | "not" ;
 terminal KW_IN : "IN" | "in" ;
-terminal KW_SELECT : "SELECT" | "select" ;
+terminal KW_SELECT :  ('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t'); //"SELECT" | "select" |
 terminal KW_AND : "AND" | "and" ;
 terminal KW_OR : "OR" | "or" ;
 terminal KW_AS : "AS" | "as" ;
