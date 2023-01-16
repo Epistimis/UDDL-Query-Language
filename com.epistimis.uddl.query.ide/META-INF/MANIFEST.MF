@@ -12,4 +12,5 @@ Require-Bundle: com.epistimis.uddl.query,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.epistimis.uddl.query.ide.contentassist.antlr,
- com.epistimis.uddl.query.ide.contentassist.antlr.internal
+ com.epistimis.uddl.query.ide.contentassist.antlr.internal,
+ com.epistimis.uddl.query.ide.contentassist.antlr.lexer

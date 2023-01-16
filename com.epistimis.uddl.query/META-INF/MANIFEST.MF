@@ -27,5 +27,6 @@ Export-Package: com.epistimis.uddl.query.validation,
  com.epistimis.uddl.query.parser.antlr,
  com.epistimis.uddl.query.serializer,
  com.epistimis.uddl.query.query.util,
- com.epistimis.uddl.query.formatting2
+ com.epistimis.uddl.query.formatting2,
+ com.epistimis.uddl.query.parser.antlr.lexer
 Import-Package: org.apache.log4j

@@ -4,6 +4,10 @@ generate query "http://www.epistimis.com/uddl/query/Query"
 
 
 /**
+ * https://stackoverflow.com/questions/30889847/match-string-in-xtext-regardless-of-upper-lower-case (second, more recent response) indicates how
+ * to get case insensitive keywords. But this means that they must be keywords, not Terminals. 
+ * TODO: replace Replace grammar terminals keywords with literal keywords. What impact does this have on Langium?
+ * 
  * BooleanPredicate is not LL. See book for how to handle this. This modification is because the original grammar is ANTLR 4, but XText only 
  * supports ANTLR 3.
  */
@@ -26,7 +30,7 @@ they may be duplicated.
 *
 */
 //QueryStatement : KW_SELECT , [ SetQualifier ] , ProjectedCharacteristicList , SelectedEntityExpression ;
-QueryStatement : KW_SELECT ( qualifier=SetQualifier )? projectedCharacteristicList=ProjectedCharacteristicList  
+QueryStatement : 'select' ( qualifier=SetQualifier )? projectedCharacteristicList=ProjectedCharacteristicList  
 	selectedEntityExpression=SelectedEntityExpression ';'?
 ;
 
@@ -72,7 +76,7 @@ SelectedEntityExpression : from=FromClause  ( where=WhereClause )?  ( orderBy=Or
 /**
 A FromClause identifies a set of related Entities via EntityExpression.
 */
-FromClause : KW_FROM  entity=EntityExpression ;
+FromClause : 'from'  entity=EntityExpression ;
 
 /**
 An EntityExpression identifies a set of Entities and a set of relationships between those Entities. The set of Entities are the selected_entitys in the EntityExpression. The set of relationships are identified by the entity_type_characteristic_equivalence_expressions in the EntityExpression.
@@ -329,12 +333,12 @@ terminal KW_EXISTS : "EXISTS" | "exists" ;
 
 terminal KW_NOT : "NOT" | "not" ;
 terminal KW_IN : "IN" | "in" ;
-terminal KW_SELECT :  ('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t'); //"SELECT" | "select" |
+//terminal KW_SELECT :  "SELECT" | "select"; // | //('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t');
 terminal KW_AND : "AND" | "and" ;
 terminal KW_OR : "OR" | "or" ;
 terminal KW_AS : "AS" | "as" ;
 terminal KW_DISTINCT : "DISTINCT" | "distinct" ;
-terminal KW_FROM : "FROM" | "from" ;
+//terminal KW_FROM : "FROM" | "from" ;
 terminal KW_WHERE : "WHERE" | "where" ;
 terminal KW_BY : "BY" | "by" ;
 terminal KW_JOIN : "JOIN" | "join" ;
