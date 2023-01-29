@@ -1,8 +1,5 @@
 # com.epistimis.uddl.query.parent
-UDDL Query
-
-# com.epistimis.uddl.parent
-Universal Data Definition Language
+UDDL Query Language
 
 UDDL was developed as part of the Future Airborne Capability Environment (FACE) work originally commissioned by the US Navy and eventually supported by the USAF and USArmy.  Interest in UDDL generally resulted in a decision to split it out of FACE for general use.
 
