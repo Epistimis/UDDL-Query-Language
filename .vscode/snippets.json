@@ -1,0 +1,15 @@
+{
+  "UDDL Query Grammar Element": {
+    "prefix": "uddlqueryelement",
+    "body": [
+      "SELECT",
+      "FROM",
+      "WHERE",
+      "GROUP BY",
+      "HAVING",
+      "ORDER BY",
+      "LIMIT"
+    ],
+    "description": "UDDL Query Grammar Element"
+  }
+}
