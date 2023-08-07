@@ -40,11 +40,10 @@ Workflow {
 			name = "com.epistimis.uddl.query.Query"
 			fileExtensions = "quddl"
 
+// Only enable this when we need to regenerate Langium
 //		    fragment = io.typefox.xtext2langium.Xtext2LangiumFragment {
 //		        outputPath = './langium'
 //		    }
-			// rename refactoring - duplicate - we get this by default
-			//fragment = refactoring.RefactorElementNameFragment2 {}
 			fragment = org.eclipse.xtext.xtext.generator.ui.codemining.CodeMiningFragment {}
 
 
@@ -52,8 +51,7 @@ Workflow {
 			parserGenerator = {
 				options = {
 					ignoreCase = true
-				}
-				
+				}				
 			}
 
 			serializer = {
