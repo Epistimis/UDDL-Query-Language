@@ -5,14 +5,14 @@ package com.epistimis.uddl.query.formatting2
 
 import com.epistimis.uddl.query.query.ProjectedCharacteristicList
 import com.epistimis.uddl.query.query.QueryStatement
-import com.epistimis.uddl.query.services.QueryGrammarAccess
-import com.google.inject.Inject
+//import com.epistimis.uddl.query.services.QueryGrammarAccess
+//import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 
 class QueryFormatter extends AbstractFormatter2 {
 	
-	@Inject extension QueryGrammarAccess
+//	@Inject extension QueryGrammarAccess
 
 	def dispatch void format(QueryStatement queryStatement, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
