@@ -126,17 +126,21 @@
 		</pluginManagement>
 	</build>
 	<repositories>
+<!--		
 		<repository>
 		   <id>io.typefox.xtext2langium</id>
 		   <url>https://typefox.github.io/xtext2langium/download/updates/v0.4.0/</url>
 		   <layout>p2</layout>
-		</repository>		
+		</repository>
+-->				
 	</repositories>
 	<dependencies>
+<!--		
 		<dependency>
 			<groupId>io.typefox.xtext2langium</groupId>
 			<artifactId>io.typefox.xtext2langium</artifactId>
 			<version>0.4.0</version>
 		</dependency>
+-->
 	</dependencies>
 </project>
