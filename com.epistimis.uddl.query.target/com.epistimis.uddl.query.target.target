@@ -46,5 +46,9 @@
 			<unit id="io.github.classgraph" version="4.8.149.v20220915-0556"/>
 			<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09"/>
 		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="io.typefox.xtext2langium" version="0.0.0"/>
+			<repository location="https://typefox.github.io/xtext2langium/download/updates/v0.4.0/"/>
+		</location>
 	</locations>
 </target>
