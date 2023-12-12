@@ -29,7 +29,10 @@
 		<module>com.epistimis.uddl.query.feature</module>
 		<module>com.epistimis.uddl.query.repository</module>
 		<module>com.epistimis.uddl.query.tests</module>
+		<!-- tests compile and run in Eclipse but don't compile using Maven. Import missing 
 		<module>com.epistimis.uddl.query.ui.tests</module>
+		-->
+		<module>com.epistimis.uddl.query.product</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -95,11 +98,17 @@
 							<version>${project.version}</version>
 						</artifact>
 					</target>
+   					<executionEnvironment>JavaSE-17</executionEnvironment>
 					<environments>
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>aarch64</arch>
 						</environment>
 						<environment>
 							<os>win32</os>

@@ -47,7 +47,9 @@ Workflow {
 //		    fragment = io.typefox.xtext2langium.Xtext2LangiumFragment {
 //		        outputPath = './langium'
 //		    }
-			fragment = org.eclipse.xtext.xtext.generator.ui.codemining.CodeMiningFragment {}
+			// Enable this when we figure out what to do with it. It will add to dependencies, thus making builds more complicated - so 
+			// don't do it before that.
+			//fragment = org.eclipse.xtext.xtext.generator.ui.codemining.CodeMiningFragment {}
 
 
 //https://stackoverflow.com/questions/30889847/match-string-in-xtext-regardless-of-upper-lower-case
@@ -56,11 +58,9 @@ Workflow {
 					ignoreCase = true
 				}				
 			}
-
 			serializer = {
 				generateStub = false
 			}
-
 			validator = {
 				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 				// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage
