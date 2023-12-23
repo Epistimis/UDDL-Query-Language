@@ -28,4 +28,5 @@ Export-Package: com.epistimis.uddl.query.validation,
  com.epistimis.uddl.query.parser.antlr,
  com.epistimis.uddl.query.serializer,
  com.epistimis.uddl.query.query.util
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.jdt.annotation
