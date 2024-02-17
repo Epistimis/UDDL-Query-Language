@@ -44,9 +44,9 @@ Workflow {
 			fileExtensions = "quddl"
 
 // Only enable this when we need to regenerate Langium
-		    fragment = io.typefox.xtext2langium.Xtext2LangiumFragment {
-		        outputPath = './langium'
-		    }
+//		    fragment = io.typefox.xtext2langium.Xtext2LangiumFragment {
+//		        outputPath = './langium'
+//		    }
 			// Enable this when we figure out what to do with it. It will add to dependencies, thus making builds more complicated - so 
 			// don't do it before that.
 			//fragment = org.eclipse.xtext.xtext.generator.ui.codemining.CodeMiningFragment {}
