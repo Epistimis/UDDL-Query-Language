@@ -3,6 +3,8 @@ module com.epistimis.uddl.query.GenerateQuery
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
 import org.eclipse.xtext.xtext.generator.ui.*
+import com.epistimis.xtextdocs.xtext.fragment.*
+import com.epistimis.xtextdocs.xtext.formatter.*
 
 var rootPath = ".."
 
@@ -84,6 +86,17 @@ Workflow {
 			projectWizard = {
 				generate = true
 			}
+		 	// xtext-docs-gen
+		 	fragment = DocsGeneratorFragment auto-inject {
+		 		outputFileName = "uddl-query-syntax"
+		 		formatter = HTMLDocsFormatter {
+		 			includeToc = true
+		 			includeSimplifiedGrammar = true
+		 			mainTitle = "UDDL Query Grammar Doc" // optional
+		 			includeDotReferenceGraph = true
+		 			
+		 		}
+		 	}
 
 		}
 	}
