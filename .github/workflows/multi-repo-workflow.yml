@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          repository: bankolejohn/face-template
+          repository: https://github.com/Epistimis/FACE-Template-Language.git
           
       - name: Build and install face-template-language
         run: mvn clean install
@@ -28,7 +28,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          repository: bankolejohn/xtext-docs-gen
+          repository: https://github.com/Epistimis/xtext-docs-gen.git
           
       - name: Build and install xtext-docs
         run: mvn clean install
@@ -36,7 +36,7 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: bankolejohn/query-new
+          repository: https://github.com/Epistimis/UDDL-Query-Language.git
           
       - name: Build and install UDDL-Query
         run: mvn clean install
@@ -44,7 +44,7 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: bankolejohn/uddl-new
+          repository: https://github.com/Epistimis/UDDL.git
           
       - name: Build and install UDDL
         run: mvn clean install
@@ -52,7 +52,7 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: bankolejohn/face-new
+          repository: https://github.com/Epistimis/FACE.git
           
       - name: Build and install FACE
         run: mvn clean install
