@@ -1,0 +1,58 @@
+name: Build and Install 
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Runner environment (OS)
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          repository: bankolejohn/face-template
+          
+      - name: Build and install face-template-language
+        run: mvn clean install
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          repository: bankolejohn/xtext-docs-gen
+          
+      - name: Build and install xtext-docs
+        run: mvn clean install
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v4
+        with:
+          repository: bankolejohn/query-new
+          
+      - name: Build and install UDDL-Query
+        run: mvn clean install
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v4
+        with:
+          repository: bankolejohn/uddl-new
+          
+      - name: Build and install UDDL
+        run: mvn clean install
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v4
+        with:
+          repository: bankolejohn/face-new
+          
+      - name: Build and install FACE
+        run: mvn clean install
