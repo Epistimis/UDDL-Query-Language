@@ -21,7 +21,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          repository: Epistimis/FACE-Template-Language.git
+          repository: Epistimis/FACE-Template-Language
+          token: ${{ secrets.EPISTIMIS_TOKEN }}
           
       - name: Build and install face-template-language
         run: mvn clean install
@@ -29,7 +30,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          repository: Epistimis/xtext-docs-gen.git
+          repository: Epistimis/xtext-docs-gen
+          token: ${{ secrets.EPISTIMIS_TOKEN }}
           
       - name: Build and install xtext-docs
         run: mvn clean install
@@ -37,7 +39,8 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: Epistimis/UDDL-Query-Language.git
+          repository: Epistimis/UDDL-Query-Language
+          token: ${{ secrets.EPISTIMIS_TOKEN }}
           
       - name: Build and install UDDL-Query
         run: mvn clean install
@@ -45,7 +48,8 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: Epistimis/UDDL.git
+          repository: Epistimis/UDDL
+          token: ${{ secrets.EPISTIMIS_TOKEN }}
           
       - name: Build and install UDDL
         run: mvn clean install
@@ -53,7 +57,8 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: Epistimis/FACE.git
+          repository: Epistimis/FACE
+          token: ${{ secrets.EPISTIMIS_TOKEN }}
           
       - name: Build and install FACE
         run: mvn clean install
